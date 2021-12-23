@@ -63,7 +63,6 @@ pacstrap /mnt base base-devel vim intel-ucode sudo networkmanager wpa_supplicant
 |---|---|
 | base | The required one with base utils. |
 | base-devel | Development tools |
-| neovim | Text Editor |
 | intel-ucode | |
 | sudo | To run superuser commands without changing the suer |
 | networkmanager | Package to manage network connections |
@@ -77,8 +76,10 @@ pacstrap /mnt base base-devel vim intel-ucode sudo networkmanager wpa_supplicant
 | swayidle | | 
 | termite | Terminal application |
 | mako | Notification Daemon |
+| nano | text editor|
 | grim + slurp | Screen shot |
 | wl-clipboard | Clipboard copy/paste |
+| gpu-switch | utility to switch between iGPU and dGPU|
 
 #### Configuring fstab
 
