@@ -70,9 +70,14 @@ pacman -S --noconfirm grub efibootmgr
 mkdir -p /boot/efi
 mount /dev/sda1 /boot/efi
 
-grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
-grub-mkconfig -o /boot/grub/grub.cfg
+#grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
+#grub-mkconfig -o /boot/grub/grub.cfg
 
+#info "Patching GRUB"
+cd grub-git
+grub-git.install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
+grub-mkconfig -o /boot/grub/grub.cfg
+cd ..
 
 sudo systemctl enable NetworkManager 
 sudo systemctl enable man-db.timer
