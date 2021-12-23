@@ -66,6 +66,9 @@ prepare() {
 
     # Patch grub-mkconfig to detect Arch Linux initramfs images.
     patch -Np1 -i "$srcdir"/detect-archlinux-initramfs.patch
+    
+    # Patch to allow use of integrated GPU.
+    patch -Np1 -i "$srcdir"/apple_set_os.patch
 
     # Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme.
     sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
