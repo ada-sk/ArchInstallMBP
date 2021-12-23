@@ -19,8 +19,8 @@ info "XOrg Configuration"
 ln -s ${SHELL_PATH}/config/xorg/.Xauthority $HOME/.Xauthority
 ln -s ${SHELL_PATH}/config/xorg/.xinitrc $HOME/.xinitrc 
 
-info "Alacrity Configuration"
-ln -s ${SHELL_PATH}/config/alacritty $HOME/.config/
+#info "Alacrity Configuration"
+#ln -s ${SHELL_PATH}/config/alacritty $HOME/.config/
 
 info "Automatic Brightness Control"
 sudo cp ${SHELL_PATH}/scripts/abc /usr/bin
