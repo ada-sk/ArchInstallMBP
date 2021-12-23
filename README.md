@@ -79,7 +79,7 @@ pacstrap /mnt base base-devel vim intel-ucode sudo networkmanager wpa_supplicant
 | nano | text editor|
 | grim + slurp | Screen shot |
 | wl-clipboard | Clipboard copy/paste |
-| gpu-switch | utility to switch between iGPU and dGPU|
+| [gpu-switch](https://github.com/0xbb/gpu-switch) | utility to switch between iGPU and dGPU|
 
 #### Configuring fstab
 
