@@ -45,7 +45,7 @@ sudo mkinitcpio -p linux
 
 info "Installing Utilities"
 sudo pacman --noconfirm -S zsh man pacman-contrib zsh-syntax-highlighting htop nnn vlc youtube-dl lm_sensors unzip imv bat fzf
-
+cp gpu-switch /usr/local/bin
 
 info "Customizing Grub"
 sudo pacman --noconfirm -S grub-customizer
