@@ -4,12 +4,12 @@ SHELL_PATH=$(readlink -f $0 | xargs dirname)
 source ${SHELL_PATH}/bin/global.sh
 
 # Please make changes to the drive based on your hardware configuration
-info "Formatting the drivers..."
+info "Formatting the drives..."
 mkfs.vfat -F32 /dev/sda1
 mkfs.ext4 /dev/sda2
 mkfs.ext4 /dev/sda3
-#mkswap /dev/sda3
-#swapon /dev/sda3
+mkswap /dev/sda4
+swapon /dev/sda4
 
 info "Mounting the drives 1. Root, 2. Boot "
 mount /dev/sda2 /mnt
@@ -25,7 +25,7 @@ cp /etc/pacman.d/mirrorlist  /etc/pacman.d/mirrorlist.backup
 reflector --verbose --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 info "Installing all packages to get sway under wayland working with audio. Some additional useful packages are included also."
-pacstrap /mnt base base-devel vim neovim intel-ucode sudo networkmanager wpa_supplicant git alsa-utils pulseaudio-alsa coreutils dosfstools util-linux exa linux linux-firmware linux-headers linux-lts linux-lts-headers sysfsutils usbutils mtools dialog e2fsprogs
+pacstrap /mnt base base-devel nano intel-ucode sudo networkmanager wpa_supplicant git alsa-utils pulseaudio-alsa coreutils dosfstools util-linux exa linux linux-firmware linux-headers linux-lts linux-lts-headers sysfsutils usbutils mtools dialog e2fsprogs
 
 info "Generating fstab for the drives."
 genfstab -L -p /mnt >> /mnt/etc/fstab
