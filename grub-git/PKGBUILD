@@ -48,7 +48,8 @@ source=("grub::git+https://git.savannah.gnu.org/git/grub.git"
         "gnulib::git+https://git.savannah.gnu.org/git/gnulib.git"
         'add-GRUB_COLOR_variables.patch'
         'detect-archlinux-initramfs.patch'
-        'grub.default')
+        'grub.default'
+        'apple_set_os.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
