@@ -56,7 +56,7 @@ lsblk
 ### Installing Arch Linux files
 
 ```{bash}
-pacstrap /mnt base base-devel vim intel-ucode sudo networkmanager wpa_supplicant  git util-linux sway wlroots wayland swaylock swayidle termite mako grim slurp wl-clipboard
+pacstrap /mnt base base-devel nano intel-ucode sudo networkmanager wpa_supplicant  git util-linux sway wlroots wayland swaylock swayidle termite mako grim slurp wl-clipboard
 ```
 
 | Package | Purpose |
@@ -79,7 +79,6 @@ pacstrap /mnt base base-devel vim intel-ucode sudo networkmanager wpa_supplicant
 | nano | text editor|
 | grim + slurp | Screen shot |
 | wl-clipboard | Clipboard copy/paste |
-| [gpu-switch](https://github.com/0xbb/gpu-switch) | utility to switch between iGPU and dGPU|
 
 #### Configuring fstab
 
@@ -95,5 +94,8 @@ There are 3+ scripts that need to be run in each stage.
 | install.sh | Install | Basic Configuration and Bootup setup |
 | post_install.sh | Post Install | Starting Services for day and patching |
 | gnome.sh | Desktop Environment | Setting up Gnome DE - Development |
+
+## Other
+Also included is [gpu-switch](https://github.com/0xbb/gpu-switch), a utility to switch between iGPU and dGPU. This requires a grub patch that has yet to be fully added here.
 
 https://bugzilla.kernel.org/show_bug.cgi?id=193121
