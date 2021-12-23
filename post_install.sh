@@ -40,7 +40,7 @@ cd /tmp/$PACK
 makepkg -fsri
 
 info "Installing Missing Firmware and Update Linux Kernel"
-pikaur --noconfirm -S wd719x-firmware aic94xx-firmware bcwc-pcie-git
+pikaur --noconfirm -S xf86-video-intel wd719x-firmware aic94xx-firmware bcwc-pcie-git
 sudo mkinitcpio -p linux
 
 info "Installing Utilities"
