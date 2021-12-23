@@ -4,11 +4,11 @@ SHELL_PATH=$(readlink -f $0 | xargs dirname)
 source ${SHELL_PATH}/bin/global.sh
 
 info "Setting Time zone and Time"
-ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 hwclock --systohc --utc
 
 info "Setting system wide language"
-sed -i '/en_GB.UTF-8'/s/^#//g /etc/locale.gen
+sed -i '/en_US.UTF-8'/s/^#//g /etc/locale.gen
 locale-gen
 cp ${SHELL_PATH}/config/etc/locale.conf /etc/
 
@@ -16,7 +16,7 @@ info "Setting font for vconsole"
 cp ${SHELL_PATH}/config/etc/vconsole.conf /etc/
 
 info "Setting machine name."
-echo Freedom > /etc/hostname
+echo ada-mbp > /etc/hostname
 
 info "Copying the modules to /etc/"
 cp ${SHELL_PATH}/config/etc/modules /etc/
@@ -51,17 +51,17 @@ info "Password for root"
 passwd
 
 
-#bootctl set-default lts.conf
-#bootctl list
+# bootctl set-default lts.conf
+# bootctl list
 
 
-info "Setting boot icon."
-pacman -S --noconfirm wget librsvg libicns
-wget -O /tmp/archlinux.svg https://www.archlinux.org/logos/archlinux-icon-crystal-64.svg
-rsvg-convert -w 128 -h 128 -o /tmp/archlogo.png /tmp/archlinux.svg
-png2icns /boot/.VolumeIcon.icns /tmp/archlogo.png
-rm /tmp/archlogo.png
-rm /tmp/archlinux.svg
+# info "Setting boot icon."
+# pacman -S --noconfirm wget librsvg libicns
+# wget -O /tmp/archlinux.svg https://www.archlinux.org/logos/archlinux-icon-crystal-64.svg
+# rsvg-convert -w 128 -h 128 -o /tmp/archlogo.png /tmp/archlinux.svg
+# png2icns /boot/.VolumeIcon.icns /tmp/archlogo.png
+# rm /tmp/archlogo.png
+# rm /tmp/archlinux.svg
 
 
 info "Making bootable drive and configurations"
