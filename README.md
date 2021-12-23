@@ -91,7 +91,7 @@ arch-chroot /mnt
 There are 3+ scripts that need to be run in each stage.
 | Script Name | Stage | Purpose |
 | --- | --- | --- |
-| post_install.sh | Preparation | Install basic required packages |
+| pre_install.sh | Preparation | Install basic required packages |
 | install.sh | Install | Basic Configuration and Bootup setup |
 | post_install.sh | Post Install | Starting Services for day and patching |
 | gnome.sh | Desktop Environment | Setting up Gnome DE - Development |
