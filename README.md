@@ -29,8 +29,8 @@ Following is my disk set-up. I am choosing not to create a special partition for
 
 | Size | Mount Point | Format | Partition Code |
 |---|---|---|---|
-| 300M | /boot | FAT32 | UEFI Boot Partition |
-| 200G | / | ext4 | Linux File System |
+| 800MB | /boot | FAT32 | UEFI Boot Partition |
+| 1023GB | / | ext4 | Linux File System |
 | * | /home | ext4 | Linux Home System |
 
 ```{bash}
