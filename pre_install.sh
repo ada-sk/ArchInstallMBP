@@ -8,8 +8,8 @@ info "Formatting the drives..."
 mkfs.vfat -F32 /dev/sda1
 mkfs.ext4 /dev/sda2
 mkfs.ext4 /dev/sda3
-mkswap /dev/sda4
-swapon /dev/sda4
+# mkswap /dev/sda4
+# swapon /dev/sda4
 
 info "Mounting the drives 1. Root, 2. Boot "
 mount /dev/sda2 /mnt
