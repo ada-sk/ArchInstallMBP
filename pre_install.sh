@@ -5,9 +5,9 @@ source ${SHELL_PATH}/bin/global.sh
 
 # Please make changes to the drive based on your hardware configuration
 info "Formatting the drives..."
-mkfs.vfat -F32 /dev/sda1
-mkfs.ext4 /dev/sda2
-mkfs.ext4 /dev/sda3
+mkfs.vfat -F32 /dev/nvme0n1p1
+mkfs.ext4 /dev/nvme0n1p3
+mkfs.ext4 /dev/nvme0n1p4
 # mkswap /dev/sda4
 # swapon /dev/sda4
 
