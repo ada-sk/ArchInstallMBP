@@ -84,4 +84,6 @@ sudo systemctl enable NetworkManager
 # sudo systemctl enable man-db.timer
 # sudo systemctl enable paccache.timer
 
-info "The system will shutdown in 5 seconds. Run post_install.sh after restart."
+info "The system will shutdown in 60 seconds. When the screen goes dark, remove the install media. Run post_install.sh after restart."
+exit
+shutdown -r +1
