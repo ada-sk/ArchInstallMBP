@@ -64,6 +64,13 @@ mount /dev/nvme0n1p1 /boot/efi
 touch /boot/mach_kernel
 mkdir -p /boot/EFI/arch && touch /boot/EFI/arch/mach_kernel
 
+wget https://github.com/0xbb/apple_set_os.efi/releases/download/v1/apple_set_os.efi
+mkdir -p /boot/EFI/custom
+cp apple_set_os.efi /boot/EFI/custom
+echo "search --no-floppy --set=root --label EFI
+      chainloader ($root)/EFI/custom/apple_set_os.efi
+      boot" >> /etc/grub.d/40_custom
+
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -90,5 +97,5 @@ sudo systemctl enable NetworkManager
 # sudo systemctl enable paccache.timer
 
 info "The system will shutdown in 60 seconds. When the screen goes dark, remove the install media. Run post_install.sh after restart."
-exit
-shutdown -r +1
+#exit
+#shutdown -r +1
