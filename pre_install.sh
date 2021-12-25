@@ -3,9 +3,13 @@
 SHELL_PATH=$(readlink -f $0 | xargs dirname)
 source ${SHELL_PATH}/bin/global.sh
 
+info "Compiling hfsprogs"
+pacman -Sy --noconfirm hfsprogs
+modprobe hfsplus
+
 # Please make changes to the drive based on your hardware configuration
 info "Formatting the drives..."
-mkfs.vfat -F32 /dev/nvme0n1p1
+mkfs.hfsplus /dev/nvme0n1p1
 mkfs.ext4 /dev/nvme0n1p3
 mkfs.ext4 /dev/nvme0n1p4
 # mkswap /dev/sda4
