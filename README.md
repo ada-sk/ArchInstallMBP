@@ -27,14 +27,15 @@ pacman -Sy git
 
 Following is my disk set-up. I am choosing not to create a special partition for swap file. If swap is required in the future, I plan to create a swap file.
 
-| Size | Mount Point | Format | Partition Code |
-|---|---|---|---|
-| 800MB | /boot | FAT32 | UEFI Boot Partition |
-| 1023GB | / | ext4 | Linux File System |
-| * | /home | ext4 | Linux Home System |
+| Size | Mount Point | Partition | Format | Partition Code |
+|---|---|---|---|---|
+| 500MB | /boot | nvme0n1p1 | FAT32 | UEFI Boot Partition |
+| 150GB | macOS | nvmeon1p2 | AFPS | macOS | 
+| 50GB | / | nvme0n1p3 | ext4 | Linux File System |
+| 100GB | /home | nvme0n1p4| ext4 | Linux Home System |
 
 ```{bash}
-cgdisk /dev/sda
+cgdisk /dev/nvme0n1
 ```
 
 #### Formatting the Drives
