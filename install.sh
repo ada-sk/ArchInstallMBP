@@ -55,34 +55,33 @@ passwd
 # bootctl list
 
 
-# info "Setting boot icon."
-# pacman -S --noconfirm wget librsvg libicns
-# wget -O /tmp/archlinux.svg https://www.archlinux.org/logos/archlinux-icon-crystal-64.svg
-# rsvg-convert -w 128 -h 128 -o /tmp/archlogo.png /tmp/archlinux.svg
-# png2icns /boot/.VolumeIcon.icns /tmp/archlogo.png
-# rm /tmp/archlogo.png
-# rm /tmp/archlinux.svg
+info "Setting boot icon."
+pacman -S --noconfirm wget librsvg libicns
+wget -O /tmp/archlinux.svg https://www.archlinux.org/logos/archlinux-icon-crystal-64.svg
+rsvg-convert -w 128 -h 128 -o /tmp/archlogo.png /tmp/archlinux.svg
+png2icns /boot/.VolumeIcon.icns /tmp/archlogo.png
+rm /tmp/archlogo.png
+rm /tmp/archlinux.svg
 
 
 info "Making bootable drive and configurations"
 pacman -S --noconfirm grub efibootmgr
 
 mkdir -p /boot/efi
-mount /dev/sda1 /boot/efi
+mount /dev/nvme0n1p1 /boot/efi
 
-#grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
-#grub-mkconfig -o /boot/grub/grub.cfg
-
-#info "Patching GRUB"
-cd grub-git
-makepkg -si
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
-cd ..
+
+# info "Patching GRUB"
+# su $USERNAME
+# cd grub-git
+# makepkg -si
+# grub-mkconfig -o /boot/grub/grub.cfg
+# cd ..
 
 sudo systemctl enable NetworkManager 
-sudo systemctl enable man-db.timer
-sudo systemctl enable paccache.timer
+# sudo systemctl enable man-db.timer
+# sudo systemctl enable paccache.timer
 
 info "The system will shutdown in 5 seconds. Run post_install.sh after restart."
-
-
