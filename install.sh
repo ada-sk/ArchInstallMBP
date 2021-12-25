@@ -54,6 +54,20 @@ passwd
 # bootctl set-default lts.conf
 # bootctl list
 
+info "Making bootable drive and configurations"
+pacman -Sy --noconfirm grub efibootmgr hfsprogs mkinitcpio
+modprobe hfsplus
+mkinitcpio -P
+
+mkdir -p /boot/efi
+mount /dev/nvme0n1p1 /boot/efi
+touch /boot/mach_kernel
+mkdir -p /boot/EFI/arch && touch /boot/EFI/arch/mach_kernel
+
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
+grub-mkconfig -o /boot/grub/grub.cfg
+
+touch /boot/System/Library/CoreServices/SystemVersion.plist
 
 info "Setting boot icon."
 pacman -S --noconfirm wget librsvg libicns
@@ -62,16 +76,6 @@ rsvg-convert -w 128 -h 128 -o /tmp/archlogo.png /tmp/archlinux.svg
 png2icns /boot/.VolumeIcon.icns /tmp/archlogo.png
 rm /tmp/archlogo.png
 rm /tmp/archlinux.svg
-
-
-info "Making bootable drive and configurations"
-pacman -S --noconfirm grub efibootmgr
-
-mkdir -p /boot/efi
-mount /dev/nvme0n1p1 /boot/efi
-
-grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
-grub-mkconfig -o /boot/grub/grub.cfg
 
 # info "Patching GRUB"
 # su $USERNAME
