@@ -11,12 +11,13 @@ mkfs.ext4 /dev/sda3
 # mkswap /dev/sda4
 # swapon /dev/sda4
 
-info "Mounting the drives 1. Root, 2. Boot "
-mount /dev/sda2 /mnt
+info "Mounting the drives 1. Boot, 3. Root, 4. Home "
+mkdir /mnt
 mkdir /mnt/boot
 mkdir /mnt/home
-mount /dev/sda1 /mnt/boot
-mount /dev/sda3 /mnt/home
+mount /dev/nvme0n1p3 /mnt
+mount /dev/nvme0n1p1 /mnt/boot
+mount /dev/nvme0n1p4 /mnt/home
 lsblk
 
 info "Installing Reflector to find the best mirror list for downloading Arch Linux"
